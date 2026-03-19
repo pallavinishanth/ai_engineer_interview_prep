@@ -20,3 +20,5 @@ Split based on:
 
 ### Semantic chunking
 - Split based on meaning (embedding similarity)
+
+“The best chunking strategy is hybrid—starting with structure-aware splitting to preserve semantic meaning, followed by length-based chunking with overlap. This balances retrieval accuracy, context preservation, and performance.”
