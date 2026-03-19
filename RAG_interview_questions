@@ -1,1 +1,5 @@
+What are the key steps involved in the Retrieval-Augmented Generation (RAG) pipeline?
+“RAG involves ingesting and chunking documents, generating embeddings, storing them in a vector database, retrieving relevant context based on a user query, and augmenting the prompt to generate grounded responses from an LLM.”
+
+
 
