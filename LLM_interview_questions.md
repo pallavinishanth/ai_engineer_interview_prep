@@ -9,6 +9,18 @@ An LLM works by predicting the next token (word/part of word) based on the conte
 - Next Token Prediction (Predicts probability of next token)
 - Output Generation (Generates tokens one by one)
 
+## Explain transformer architecture in simplest way?
+A Transformer is a model that understands text by looking at all words at once and deciding which words are important to each other using attention. Instead of reading word-by-word, it asks: Which words should I focus on? example:
+"The bank of the river" -> “bank” pays attention to:“river” (not money)
+
+## Encoder vs Decoder
+“The encoder processes and understands the input sequence, while the decoder generates the output sequence token by token using that context.”
+Encoder - Takes input text and understands context
+Decoder - Uses that understanding to generate output step by step
+Encoder-only models (e.g., BERT) - classification, embeddings
+Decoder-only models (e.g., GPT) - text generation
+Encoder-Decoder models (e.g., T5) - translation, summarization
+
 ## What is tokenization and why is it important in LLMs?
 Tokenization is the process of breaking text into smaller units called tokens (words, subwords, or characters) so that a model can process it.
 - Models understand numbers, not text
