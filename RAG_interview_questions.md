@@ -69,7 +69,7 @@ Above all monitoring & logging, audit & compliance, network security, identity a
 
 ## Design a RAG system for enterprise documents?
 
-**Ingestion**
+<u>**Ingestion**</u>
 
 First, I’d ingest documents from multiple enterprise sources:
 - SharePoint, Confluence, internal portals
