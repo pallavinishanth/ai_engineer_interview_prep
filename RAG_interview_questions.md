@@ -77,28 +77,28 @@ First, I’d ingest documents from multiple enterprise sources:
 - structured sources like databases or APIs
 
 At ingestion time I’d:
-	•	extract text
-	•	preserve metadata like source, owner, document type, department, created date, sensitivity
-	•	normalize format
-	•	deduplicate documents
-	•	version documents so updates don’t create confusion
+- extract text
+- preserve metadata like source, owner, document type, department, created date, sensitivity
+- normalize format
+- deduplicate documents
+- version documents so updates don’t create confusion
 
 For parsing, I’d use source-specific loaders and a common document schema.
 
 **Chunking strategy**
 
 For enterprise documents, I would use a hybrid chunking strategy:
-	•	structure-aware first, using headings, sections, tables where possible
-	•	then length-based chunking with overlap
+- structure-aware first, using headings, sections, tables where possible
+- then length-based chunking with overlap
 
 Typical setup:
-	•	500–1000 token chunks
-	•	10–20% overlap
+- 500–1000 token chunks
+- 10–20% overlap
 
 Why:
-	•	keeps business meaning intact
-	•	avoids losing context at boundaries
-	•	improves retrieval precision
+- keeps business meaning intact
+- avoids losing context at boundaries
+- improves retrieval precision
 
 **Embeddings and Indexing**
 
