@@ -373,26 +373,26 @@ I handle multi-tenant RAG by designing for:
 
 **Data Isolation**: I would isolate tenant data using one of these patterns -  Separate index per tenant, Shared index with tenant metadata filters or hybrid approach (separate indexes for high-risk / regulated tenants, shared indexes for low-risk tenants)
 **Tenant aware isolation**: During ingestion, I would tag every document and chunk with tenant metadata: Tenant source docs
-   ↓
+   ->
 Parse + chunk
-   ↓
+   ->
 Attach tenant metadata
-   ↓
+   ->
 Embed
-   ↓
+   ->
 Store in tenant-scoped index
 
 **Retrieval security**: At query time, I would enforce isolation before generation.
 User query
-   ↓
+   ->
 Authenticate user
-   ↓
+   ->
 Resolve tenant + role
-   ↓
+   ->
 Apply tenant filter + access filter
-   ↓
+   ->
 Retrieve documents
-   ↓
+   ->
 Generate response
 
 Important:
@@ -457,19 +457,19 @@ This helps with compliance and debugging.
 **Overall architecture**
 
 Tenant Sources
-   ↓
+   ->
 Tenant-aware ingestion pipeline
-   ↓
+   ->
 Chunking + metadata tagging
-   ↓
+   ->
 Embeddings
-   ↓
+   ->
 Vector store / hybrid search
-   ↓
+   ->
 Tenant + ACL filtered retrieval
-   ↓
+   ->
 LLM generation with citations
-   ↓
+   ->
 Per-tenant logging, monitoring, billing
 
 Summary:
