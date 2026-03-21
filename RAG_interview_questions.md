@@ -118,31 +118,31 @@ Why:
 **Retreival layer**
 
 At query time:
-	1.	authenticate the user
-	2.	apply metadata and permission filters
-	3.	convert query to embedding
-	4.	retrieve top-k chunks
-	5.	optionally re-rank results
-	6.	send best evidence to the LLM
+-	authenticate the user
+-	apply metadata and permission filters
+-	convert query to embedding
+-	retrieve top-k chunks
+-	optionally re-rank results
+-	send best evidence to the LLM
 
 I’d use:
-	-	semantic retrieval for meaning
-	-	keyword search for exact terms
-	-	re-ranking to improve final relevance
+-	semantic retrieval for meaning
+-	keyword search for exact terms
+-	re-ranking to improve final relevance
 
 This is especially useful when documents are large or from mixed departments.
 
 **Generation layer**
 
 The LLM should not answer freely. I’d constrain it with a grounded prompt like:
-	-	answer only from provided context
-	-	cite sources
-	-	if answer is missing, say you don’t know
+-	answer only from provided context
+-	cite sources
+-	if answer is missing, say you don’t know
 
 The output should include:
-	-	final answer
-	-	supporting citations
-	-	confidence or evidence references
+-	final answer
+-	supporting citations
+-	confidence or evidence references
 
 This improves trust and reduces hallucinations.
 
@@ -151,13 +151,13 @@ This improves trust and reduces hallucinations.
 For enterprise RAG, this is critical.
 
 I’d enforce:
-	-	RBAC / user-based authorization
-	-	document-level and metadata-based filtering
-	-	encryption at rest and in transit
-	-	logging and audit trails
-	-	PII masking where required
-	-	prompt injection safeguards
-	-	approved model usage only
+-	RBAC / user-based authorization
+-	document-level and metadata-based filtering
+-	encryption at rest and in transit
+-	logging and audit trails
+-	PII masking where required
+-	prompt injection safeguards
+-	approved model usage only
 
 A user should only retrieve documents they are authorized to access.
 
@@ -166,39 +166,39 @@ A user should only retrieve documents they are authorized to access.
 I’d evaluate both retrieval and generation.
 
 Retriever metrics
-	-	Precision@k
-	-	Recall@k
-	-	MRR
+-	Precision@k
+-	Recall@k
+-	MRR
 
 Generator metrics
-	-	faithfulness
-	-	relevance
-	-	citation correctness
-	-	hallucination rate
+-	faithfulness
+-	relevance
+-	citation correctness
+-	hallucination rate
 
 System metrics
-	-	latency
-	-	cost
-	-	user satisfaction
-	-	adoption
+-	latency
+-	cost
+-	user satisfaction
+-	adoption
 
 I’d also include human review and feedback loops.
 
 **Monitoring**
 
 In production I’d monitor:
-	-	failed retrievals
-	-	low-confidence queries
-	-	latency spikes
-	-	hallucination complaints
-	-	source freshness
-	-	drift in document quality
+-	failed retrievals
+-	low-confidence queries
+-	latency spikes
+-	hallucination complaints
+-	source freshness
+-	drift in document quality
 
 Then use feedback for:
-	-	chunking improvements
-	-	retriever tuning
-	-	prompt changes
-	-	source cleanup
+-	chunking improvements
+-	retriever tuning
+-	prompt changes
+-	source cleanup
 
 	
 ## How would you build a chatbot over internal data?
