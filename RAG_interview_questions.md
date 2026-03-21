@@ -363,3 +363,115 @@ For millions of enterprise documents:
 
 
 ## How do you handle multi-tenant RAG systems?
+A multi-tenant RAG system means one platform serves multiple teams, customers, or business units, while keeping their data isolated and secure.
+I handle multi-tenant RAG by designing for:
+-	strict tenant isolation
+-	tenant-aware ingestion and indexing
+-	tenant-scoped retrieval
+-	access-controlled generation
+-	observability and cost tracking per tenant
+
+**Data Isolation**: I would isolate tenant data using one of these patterns -  Separate index per tenant, Shared index with tenant metadata filters or hybrid approach (separate indexes for high-risk / regulated tenants, shared indexes for low-risk tenants)
+**Tenant aware isolation**: During ingestion, I would tag every document and chunk with tenant metadata: Tenant source docs
+   ↓
+Parse + chunk
+   ↓
+Attach tenant metadata
+   ↓
+Embed
+   ↓
+Store in tenant-scoped index
+
+**Retrieval security**: At query time, I would enforce isolation before generation.
+User query
+   ↓
+Authenticate user
+   ↓
+Resolve tenant + role
+   ↓
+Apply tenant filter + access filter
+   ↓
+Retrieve documents
+   ↓
+Generate response
+
+Important:
+-	never retrieve across tenants unless explicitly allowed
+-	apply ACL filtering before or during retrieval
+-	include document-level permissions, not just tenant-level
+
+Example:
+A user from Tenant A should never see chunks from Tenant B, even if they are semantically relevant.
+
+**Separate auth from retrieval logic**
+I would integrate with enterprise identity:
+-	SSO / OAuth / SAML
+-	RBAC / ABAC
+-	group membership
+-	tenant-scoped tokens
+
+Then pass those claims into retrieval filters.
+
+**Tenant-specific configurations**
+Different tenants may need different settings:
+-	different embedding models
+-	different chunking strategies
+-	different prompt templates
+-	different LLM providers
+-	different retention rules
+-	different guardrails
+
+So I’d make the platform configurable per tenant, but through a controlled config layer.
+Tenant A → Bedrock + strict compliance prompt
+Tenant B → Vertex AI + broader internal search
+
+**Prompt and generation safeguards**
+The LLM should only see retrieved context from the allowed tenant scope.
+
+I’d also:
+-	include tenant-specific system prompts
+-	restrict source usage
+-	require citations
+-	prevent cross-tenant memory leakage
+-	disable shared conversational memory across tenants
+
+This is very important if chat history exists.
+
+**Monitoring and auditability**
+For enterprise systems, I’d track metrics per tenant:
+-	query volume
+-	latency
+-	cost
+-	retrieval quality
+-	hallucination / fallback rate
+-	source usage
+-	access denials
+
+Also keep audit logs for:
+-	who queried what
+-	which documents were retrieved
+-	what response was generated
+
+This helps with compliance and debugging.
+
+**Overall architecture**
+
+Tenant Sources
+   ↓
+Tenant-aware ingestion pipeline
+   ↓
+Chunking + metadata tagging
+   ↓
+Embeddings
+   ↓
+Vector store / hybrid search
+   ↓
+Tenant + ACL filtered retrieval
+   ↓
+LLM generation with citations
+   ↓
+Per-tenant logging, monitoring, billing
+
+Summary:
+"I handle multi-tenant RAG by making the entire pipeline tenant-aware, from ingestion to retrieval and generation. Every document and chunk is tagged with tenant metadata, and retrieval always applies tenant and access-control filters before sending context to the LLM. Depending on security requirements, I would use either separate indexes per tenant or a shared index with strict metadata filtering. I’d also isolate cache keys, prompts, logs, and monitoring by tenant, and support tenant-specific compliance, configuration, and cost tracking."
+
