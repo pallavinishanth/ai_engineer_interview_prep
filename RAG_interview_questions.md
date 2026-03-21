@@ -72,9 +72,9 @@ Above all monitoring & logging, audit & compliance, network security, identity a
 **Ingestion**
 
 First, I’d ingest documents from multiple enterprise sources:
-	•	SharePoint, Confluence, internal portals
-	•	PDFs, Word docs, policies, SOPs
-	•	structured sources like databases or APIs
+- SharePoint, Confluence, internal portals
+- PDFs, Word docs, policies, SOPs
+- structured sources like databases or APIs
 
 At ingestion time I’d:
 	•	extract text
