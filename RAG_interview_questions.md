@@ -102,18 +102,23 @@ Why:
 
 **Embeddings and Indexing**
 
-For enterprise documents, I would use a hybrid chunking strategy:
-- structure-aware first, using headings, sections, tables where possible
-- then length-based chunking with overlap
+Each chunk would be converted into embeddings and stored in a vector database.
 
-Typical setup:
--	500–1000 token chunks
--	10–20% overlap
+I’d store:
+-	chunk text
+-	embedding vector
+-	metadata
+-	document ID / version
+-	access-control tags
 
-Why:
--	keeps business meaning intact
--	avoids losing context at boundaries
--	improves retrieval precision
+For indexing:
+-	vector index for semantic search
+-	optional keyword/full-text index for exact matches
+-	hybrid search for best enterprise performance
+
+This is important because enterprise users often search both semantically and exactly, like:
+-	“travel reimbursement policy”
+-	exact “policy number 1042”
 
 **Retreival layer**
 
