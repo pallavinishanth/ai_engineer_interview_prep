@@ -205,7 +205,161 @@ Then use feedback for:
 -	prompt changes
 -	source cleanup
 
-	
-## How would you build a chatbot over internal data?
+
 ## How would you scale RAG for millions of documents?
+For millions of docs, ingestion must be asynchronous and incremental.
+
+I’d do:
+	•	distributed document loading
+	•	deduplication
+	•	versioning
+	•	change detection
+	•	incremental re-indexing only for changed documents
+
+Important:
+	•	don’t re-embed everything on every update
+	•	process only new or modified docs
+
+2. Chunk intelligently
+
+Bad chunking explodes index size.
+
+I’d use:
+	•	structure-aware chunking first
+	•	then length-based chunking with overlap
+	•	metadata per chunk: source, doc type, owner, department, date, permissions
+
+This helps retrieval quality and later filtering.
+
+3. Generate embeddings in batch
+
+Embedding millions of documents is expensive, so I’d:
+	•	run batch embedding jobs
+	•	parallelize across workers
+	•	cache embeddings for unchanged chunks
+	•	use queues for ingestion jobs
+
+4. Use a scalable vector store
+
+For millions of chunks, you need:
+	•	approximate nearest neighbor search
+	•	sharding / partitioning
+	•	replication
+	•	metadata filtering
+
+I’d choose a vector DB or search platform that supports:
+	•	ANN indexes
+	•	horizontal scaling
+	•	hybrid search
+	•	fast metadata filtering
+
+5. Partition the index
+
+A single giant index is inefficient.
+
+I’d partition by useful dimensions like:
+	•	business unit
+	•	geography
+	•	document type
+	•	tenant
+	•	security boundary
+
+That reduces search space and improves latency.
+
+6. Use hybrid retrieval
+
+At scale, semantic-only search is often not enough.
+
+I’d combine:
+	•	vector search for semantic meaning
+	•	keyword / BM25 / full-text for exact matches
+	•	metadata filters for narrowing scope
+
+This is especially important in enterprise systems with IDs, policy numbers, codes, names.
+
+7. Add re-ranking
+
+Initial retrieval over millions of chunks can be noisy.
+
+Flow:
+	•	retrieve top 50–100 candidates cheaply
+	•	re-rank top candidates with stronger model
+	•	send only best few chunks to LLM
+
+This improves quality without making first-stage retrieval too expensive.
+
+8. Pre-filter before vector search
+
+Don’t search all documents if you already know the scope.
+
+Use:
+	•	user permissions
+	•	recency
+	•	doc type
+	•	department
+	•	source
+	•	language
+
+This is critical for both scale and security.
+
+9. Separate offline and online systems
+
+Use different paths for:
+	•	offline ingestion/index building
+	•	online low-latency query serving
+
+That way indexing jobs don’t affect live query latency.
+
+10. Cache aggressively
+
+At scale, many questions repeat.
+
+Cache:
+	•	embeddings for repeated queries
+	•	retrieval results for popular queries
+	•	final answers where safe
+	•	reranker outputs if useful
+
+11. Control context size
+
+With millions of docs, retrieval can overwhelm the LLM.
+
+So I’d:
+	•	keep top-k small after reranking
+	•	compress context if needed
+	•	merge duplicate evidence
+	•	avoid passing too many similar chunks
+
+12. Monitor retrieval quality and latency
+
+At this scale, monitoring is mandatory.
+
+Track:
+	•	Precision@k / Recall@k / MRR
+	•	latency per stage
+	•	embedding job failures
+	•	stale index percentage
+	•	cache hit rate
+	•	query volume by partition
+	•	hallucination / unsupported answer rate
+
+13. Handle freshness and updates
+
+For enterprise docs, freshness matters.
+
+I’d support:
+	•	delta ingestion
+	•	tombstoning deleted docs
+	•	version-aware retrieval
+	•	priority indexing for critical docs
+
+14. Secure it properly
+
+For millions of enterprise documents:
+	•	enforce row/document-level access
+	•	filter by ACL before retrieval
+	•	encrypt at rest and in transit
+	•	log access and citations
+
+
 ## How do you handle multi-tenant RAG systems?
