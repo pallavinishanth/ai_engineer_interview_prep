@@ -55,7 +55,7 @@ For RAG applications we might have to read data from multiple sources/formats li
 
 Loading is just reading documents, where as ingestion is broader than just loading its full pipeline to make them searchable in RAG. Ingestion includes loading, cleaning, normalization, deduplication, chunking, embedding, indexing into vector store.
 
-## How do you secure data in overall RAG pipeline
+## How do you secure data in overall RAG pipeline?
 Secure a RAG pipeline by enforcing access control, protecting data at rest and in transit, filtering sensitive data, applying guardrails at the LLM layer, and ensuring auditability and monitoring across the pipeline.
 Think in layers "Data Source → Ingestion → Storage → Retrieval → LLM → Response"
 - Data Source: protect raw data using role-based access control (RBAC), Encryption at rest (S3, DB), secure API's
