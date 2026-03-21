@@ -64,4 +64,5 @@ Think in layers "Data Source → Ingestion → Storage → Retrieval → LLM →
 - Retrieval security: Enforce access control during retreival
 - LLM layer security: prevent prompt injection, prevent data leakage, ground responses
 - Response security: redact sensitive info, apply output filters, limit exposure
+  
 Above all monitoring & logging, audit & compliance, network security, identity and access are also important.
