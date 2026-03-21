@@ -32,7 +32,7 @@
 -	How do you split data (train/test/validation)?
 -	What is cross-validation?
 
-## 🧠 6. Time Series (Important for YOU)
+## 🧠 6. Time Series 
 -	What is time-series data?
 -	What is LSTM and why is it used?
 -	What is stationarity?
@@ -66,7 +66,7 @@
 -	What is model monitoring?
 
 
-## ☁️ 11. ML in Cloud (important for your role)
+## ☁️ 11. ML in Cloud 
 -	How do you deploy ML models on AWS?
 -	What is SageMaker?
 -	How do you build scalable ML pipelines?
