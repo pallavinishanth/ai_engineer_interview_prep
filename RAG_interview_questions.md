@@ -66,3 +66,152 @@ Think in layers "Data Source → Ingestion → Storage → Retrieval → LLM →
 - Response security: redact sensitive info, apply output filters, limit exposure
   
 Above all monitoring & logging, audit & compliance, network security, identity and access are also important.
+
+## Design a RAG system for enterprise documents?
+**High Level Architecture:**
+
+Enterprise Sources
+  ├ SharePoint / OneDrive
+  ├ PDFs / DOCX / Wiki
+  ├ Databases / APIs
+  └ S3 / Cloud storage
+        ↓
+Ingestion + Parsing
+        ↓
+Chunking + Metadata enrichment
+        ↓
+Embeddings + Vector Index
+        ↓
+Retriever + Re-ranker
+        ↓
+LLM / Response Generation
+        ↓
+Citations + Logging + Feedback
+
+**Ingestion**
+First, I’d ingest documents from multiple enterprise sources:
+	•	SharePoint, Confluence, internal portals
+	•	PDFs, Word docs, policies, SOPs
+	•	structured sources like databases or APIs
+
+At ingestion time I’d:
+	•	extract text
+	•	preserve metadata like source, owner, document type, department, created date, sensitivity
+	•	normalize format
+	•	deduplicate documents
+	•	version documents so updates don’t create confusion
+
+For parsing, I’d use source-specific loaders and a common document schema.
+
+**Chunking strategy**
+For enterprise documents, I would use a hybrid chunking strategy:
+	•	structure-aware first, using headings, sections, tables where possible
+	•	then length-based chunking with overlap
+
+Typical setup:
+	•	500–1000 token chunks
+	•	10–20% overlap
+
+Why:
+	•	keeps business meaning intact
+	•	avoids losing context at boundaries
+	•	improves retrieval precision
+
+**Embeddings and Indexing**
+For enterprise documents, I would use a hybrid chunking strategy:
+	•	structure-aware first, using headings, sections, tables where possible
+	•	then length-based chunking with overlap
+
+Typical setup:
+	•	500–1000 token chunks
+	•	10–20% overlap
+
+Why:
+	•	keeps business meaning intact
+	•	avoids losing context at boundaries
+	•	improves retrieval precision
+
+**Retreival layer**
+At query time:
+	1.	authenticate the user
+	2.	apply metadata and permission filters
+	3.	convert query to embedding
+	4.	retrieve top-k chunks
+	5.	optionally re-rank results
+	6.	send best evidence to the LLM
+
+I’d use:
+	•	semantic retrieval for meaning
+	•	keyword search for exact terms
+	•	re-ranking to improve final relevance
+
+This is especially useful when documents are large or from mixed departments.
+
+**Generation layer**
+The LLM should not answer freely. I’d constrain it with a grounded prompt like:
+	•	answer only from provided context
+	•	cite sources
+	•	if answer is missing, say you don’t know
+
+The output should include:
+	•	final answer
+	•	supporting citations
+	•	confidence or evidence references
+
+This improves trust and reduces hallucinations.
+
+**Security and Governance**
+For enterprise RAG, this is critical.
+
+I’d enforce:
+	•	RBAC / user-based authorization
+	•	document-level and metadata-based filtering
+	•	encryption at rest and in transit
+	•	logging and audit trails
+	•	PII masking where required
+	•	prompt injection safeguards
+	•	approved model usage only
+
+A user should only retrieve documents they are authorized to access.
+
+**Evaluation**
+I’d evaluate both retrieval and generation.
+
+Retriever metrics
+	•	Precision@k
+	•	Recall@k
+	•	MRR
+
+Generator metrics
+	•	faithfulness
+	•	relevance
+	•	citation correctness
+	•	hallucination rate
+
+System metrics
+	•	latency
+	•	cost
+	•	user satisfaction
+	•	adoption
+
+I’d also include human review and feedback loops.
+
+**Monitoring**
+In production I’d monitor:
+	•	failed retrievals
+	•	low-confidence queries
+	•	latency spikes
+	•	hallucination complaints
+	•	source freshness
+	•	drift in document quality
+
+Then use feedback for:
+	•	chunking improvements
+	•	retriever tuning
+	•	prompt changes
+	•	source cleanup
+
+	
+## How would you build a chatbot over internal data?
+## How would you scale RAG for millions of documents?
+## How do you handle multi-tenant RAG systems?
