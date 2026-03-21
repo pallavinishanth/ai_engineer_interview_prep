@@ -68,27 +68,9 @@ Think in layers "Data Source → Ingestion → Storage → Retrieval → LLM →
 Above all monitoring & logging, audit & compliance, network security, identity and access are also important.
 
 ## Design a RAG system for enterprise documents?
-**High Level Architecture:**
-
-Enterprise Sources
-  ├ SharePoint / OneDrive
-  ├ PDFs / DOCX / Wiki
-  ├ Databases / APIs
-  └ S3 / Cloud storage
-        ↓
-Ingestion + Parsing
-        ↓
-Chunking + Metadata enrichment
-        ↓
-Embeddings + Vector Index
-        ↓
-Retriever + Re-ranker
-        ↓
-LLM / Response Generation
-        ↓
-Citations + Logging + Feedback
 
 **Ingestion**
+
 First, I’d ingest documents from multiple enterprise sources:
 	•	SharePoint, Confluence, internal portals
 	•	PDFs, Word docs, policies, SOPs
@@ -104,6 +86,7 @@ At ingestion time I’d:
 For parsing, I’d use source-specific loaders and a common document schema.
 
 **Chunking strategy**
+
 For enterprise documents, I would use a hybrid chunking strategy:
 	•	structure-aware first, using headings, sections, tables where possible
 	•	then length-based chunking with overlap
@@ -118,6 +101,7 @@ Why:
 	•	improves retrieval precision
 
 **Embeddings and Indexing**
+
 For enterprise documents, I would use a hybrid chunking strategy:
 	•	structure-aware first, using headings, sections, tables where possible
 	•	then length-based chunking with overlap
@@ -132,6 +116,7 @@ Why:
 	•	improves retrieval precision
 
 **Retreival layer**
+
 At query time:
 	1.	authenticate the user
 	2.	apply metadata and permission filters
@@ -148,6 +133,7 @@ I’d use:
 This is especially useful when documents are large or from mixed departments.
 
 **Generation layer**
+
 The LLM should not answer freely. I’d constrain it with a grounded prompt like:
 	•	answer only from provided context
 	•	cite sources
@@ -161,6 +147,7 @@ The output should include:
 This improves trust and reduces hallucinations.
 
 **Security and Governance**
+
 For enterprise RAG, this is critical.
 
 I’d enforce:
@@ -175,6 +162,7 @@ I’d enforce:
 A user should only retrieve documents they are authorized to access.
 
 **Evaluation**
+
 I’d evaluate both retrieval and generation.
 
 Retriever metrics
@@ -197,6 +185,7 @@ System metrics
 I’d also include human review and feedback loops.
 
 **Monitoring**
+
 In production I’d monitor:
 	•	failed retrievals
 	•	low-confidence queries
