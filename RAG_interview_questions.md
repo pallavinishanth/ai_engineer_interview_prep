@@ -508,4 +508,26 @@ Below are the major steps needs to perform to ensure sensitive data safety in pr
 -	Restrict access via RBAC
 -	Ensure outputs don’t reveal sensitive customer data
 
+## How the Vector databases stores the vectors and data?
+Vector databases store embeddings along with the associated metadata, which typically includes the original text or a reference to it. The vectors are used for similarity search, and the stored text is what gets returned after retrieval.
+
+Example record in vector DB looks like this:
+
+{
+  "id": "doc_1_chunk_3",
+  "embedding": [0.12, -0.98, 0.44, ...],
+  "metadata": {
+    "text": "Collision coverage includes damage to your vehicle...",
+    "source": "policy_doc.pdf",
+    "page": 12
+  }
+}
+
+Key Components: Vector (embedding), Metadata
+
+Two Common Storage Patterns: 
+✅ Pattern 1: Store text inside vector DB (most common): Text is stored directly in metadata, simple and fast
+✅ Pattern 2: Store only reference (enterprise scale): Actual text stored in S3/database and retrieved separately
+In enterprise systems, we often avoid storing raw sensitive text directly in the vector database. Instead, we store embeddings with references and fetch the actual content from a secure data store after retrieval.
+
 
