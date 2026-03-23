@@ -500,4 +500,12 @@ To protect sensitive data in GenAI systems, I use a layered approach: data minim
 
 **Evaluation & Testing, Compliance**: Test hallucination leaks, prompt injection attacks
 
+Below are the major steps needs to perform to ensure sensitive data safety in production level:
+
+-	Mask all PII before embedding
+-	Store embeddings in a secure vector DB (encrypted)
+-	Use private LLM endpoints
+-	Restrict access via RBAC
+-	Ensure outputs don’t reveal sensitive customer data
+
 
