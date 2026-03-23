@@ -475,7 +475,8 @@ Per-tenant logging, monitoring, billing
 Summary:
 "I handle multi-tenant RAG by making the entire pipeline tenant-aware, from ingestion to retrieval and generation. Every document and chunk is tagged with tenant metadata, and retrieval always applies tenant and access-control filters before sending context to the LLM. Depending on security requirements, I would use either separate indexes per tenant or a shared index with strict metadata filtering. I’d also isolate cache keys, prompts, logs, and monitoring by tenant, and support tenant-specific compliance, configuration, and cost tracking."
 
-How do you protect sensitive data in GenAI systems?
+## How do you protect sensitive data in GenAI systems?
+
 To protect sensitive data in GenAI systems, I use a layered approach: data minimization, PII redaction before sending data to models, secure model hosting (private endpoints or VPC), encryption in transit and at rest, strict access controls, and output guardrails. I also ensure we don’t log sensitive data and implement monitoring and auditing for compliance.
 
 **Data Minimization:** 
@@ -484,12 +485,19 @@ To protect sensitive data in GenAI systems, I use a layered approach: data minim
 -	Use retrieval (RAG) instead of sending entire datasets
   
 **PII Detection & Masking:** Before data reaches the LLM mask Names, SSN, Policy numbers, addresses
+
 **Secure Model Usage:** Prefer private deployments Azure OpenAI (private endpoint), AWS Bedrock (VPC), Self-hosted models (for high compliance)
+
 **Access Control (RBAC):** Role-based access, API authentication 
+
 **Encryption**: In transit: HTTPS / TLS, At rest: encrypted storage (S3, DBs, vector DBs)  	
+
 **Prompt & Output Guardrails:** Prevent Data leakage & Prompt injection
+
 **Logging & Monitoring (SAFE WAY):** Do NOT log raw sensitive prompts
+
 **Data Isolation:** Tenant isolation (multi-tenant systems), Separate vector indexes per customer
+
 **Evaluation & Testing, Compliance**: Test hallucination leaks, prompt injection attacks
 
 
