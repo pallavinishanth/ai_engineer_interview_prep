@@ -57,7 +57,24 @@ Decrease regularization constraints.
 Train the model for a longer duration.
 
 -	What is bias vs variance?
+
+The Bias-Variance Tradeoff In data science, this concept is framed as managing Bias and Variance:
+
+Underfitting = High Bias: The model makes strong, incorrect assumptions about the data, ignoring its actual complexity.
+
+Overfitting = High Variance: The model is highly sensitive to small fluctuations in the training set, changing wildly with different data.
+
 -	What is regularization?
+
+Regularization is a technique used to prevent overfitting by adding a penalty to the model's complexity.It discourages the machine learning model from learning overly complex patterns, keeping it simple enough to perform accurately on new, unseen data.
+
+During training, a regression model minimizes its Loss (the error between actual and predicted values). Regularization alters this process by adding a penalty score to the loss:
+
+\(\text{Total\ Cost}=\text{Loss\ (Prediction\ Error)}+\text{Penalty\ (Model\ Complexity)}\)
+
+If the model tries to create a highly flexible, wiggly line to touch every single training data point, the Penalty increases dramatically. This forces the model to settle for a smoother, simpler line that generalizes better. 
+
+There are three common ways to calculate and apply this complexity penalty in regression: L1 Regularization (Lasso Regression), L2 Regularization (Ridge Regression), Elastic Net Regularization
 
 ## 📊 2. Supervised Learning
 -	Difference between classification and regression?
