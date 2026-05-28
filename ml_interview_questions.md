@@ -107,8 +107,24 @@ Linear regression works reliably only when certain key assumptions about the dat
  Association Rule Learning: Uncovering logical relationships and rules between variables, such as discovering items frequently bought together in retail.
 
 ## 🔍 3. Model Evaluation
+- Evaluation metric for supervised vs unsupervised?
+
+  Supervised learning evaluation is highly objective because you can directly compare the model's predictions against the actual known outcomes (y). The metrics are divided by task type:
+
+  Classification Metrics (Predicting Categories) - Accuracy, Precision, Recall, F1-score, ROC-AUC
+
+  Regression Metrics (Predicting Numbers) - MAE, MSE, RMSE, R2
+  
 -	What is accuracy, precision, recall, F1-score?
+
+  + Accuracy: The percentage of total correct predictions. It works well only if your dataset is balanced.
+  + Precision: Out of all predicted positives, how many were actually positive? Use this when false positives are costly (e.g., email spam filtering).
+  + Recall (Sensitivity): Out of all actual positives, how many did the model find? Use this when false negatives are dangerous (e.g., medical diagnoses).
+  + F1-Score: The harmonic mean of precision and recall. It provides a single balance score for imbalanced data.
+  + ROC-AUC: Measures the model's ability to distinguish between classes across all possible thresholds.
 -	When do you use precision vs recall?
+
+  Use Precision when the cost of a False Positive is high. Use Recall when the cost of a False Negative is high.
 -	What is confusion matrix?
 -	What is ROC-AUC?
 
