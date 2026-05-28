@@ -159,9 +159,31 @@ Linear regression works reliably only when certain key assumptions about the dat
 
 ## 🔄 5. Data Handling
 -	How do you handle missing data?
+
+  Handling missing data requires either removing the incomplete records or replacing the missing values with calculated estimates. The right choice depends on the amount of missing data and the type of feature. 
+  
+  Core Techniques
+    * Deletions: Removing missing values from the dataset entirely.
+    * Imputation: Replacing missing cells with computed statistical values.
+    * Flagging: Creating an indicator column to tell the model a value was missing.
+  
 -	What is data leakage?
+
+  Data leakage in machine learning occurs when a model unintentionally uses information from outside the training dataset, such as future data or test results. This "cheating" artificially inflates the model's accuracy during testing, but causes it to fail dramatically when making predictions in the real world. To prevent data leakage in machine learning projects, implement the following best practices: Always divide your data into training, validation, and test sets before performing any exploratory data analysis or feature engineering, Scale, normalize, or impute missing values only on the training data, and then apply those exact same transformations to your test data, Ensure that all features used to train the model would logically exist and be available at the exact moment a prediction needs to be made in a live, production environment.
+  
 -	How do you split data (train/test/validation)?
+
+  Data splitting separates your dataset into distinct subsets to train your model and accurately test its real-world performance. You must perform this split before any data preprocessing to prevent data leakage. 
+  
+  The Three Data Subsets: Training Set (60–80%), Validation Set (10–20%), Testing Set (10–20%). 
+
+  Standard Splitting Methods: Random Splitting, Stratified Splitting, Time-Based (Temporal) Splitting
+  
 -	What is cross-validation?
+
+  Cross-validation is a resampling technique used to evaluate how well a machine learning model generalizes to unseen data. It splits a single dataset into multiple parts, training the model on some parts and testing it on the remaining parts to ensure the model does not just memorize the training data (overfitting).
+
+  Common Types : K-fold, Stratified k-fold, time series split.
 
 ## 🧠 6. Time Series 
 -	What is time-series data?
