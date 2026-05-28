@@ -70,7 +70,7 @@ Regularization is a technique used to prevent overfitting by adding a penalty to
 
 During training, a regression model minimizes its Loss (the error between actual and predicted values). Regularization alters this process by adding a penalty score to the loss:
 
-\(\text{Total\ Cost}=\text{Loss\ (Prediction\ Error)}+\text{Penalty\ (Model\ Complexity)}\)
+Total Cost = Loss(Prediction Error) + Penalty (Model Complexity)
 
 If the model tries to create a highly flexible, wiggly line to touch every single training data point, the Penalty increases dramatically. This forces the model to settle for a smoother, simpler line that generalizes better. 
 
