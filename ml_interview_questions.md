@@ -152,7 +152,10 @@ Linear regression works reliably only when certain key assumptions about the dat
 
   Handling categorical variables requires converting text labels or categories into numbers because machine learning models can only perform mathematical operations. 
   
-  * One-Hot Encoding: Creates a new binary (0 or 1) column for every unique category in a feature. * Ordinal Encoding: Assigns a unique integer to each category based on a specific, meaningful order. * Label Encoding: Assigns a unique integer to each category randomly, without implying any specific order. * Target Encoding: Replaces each category with the average value of the target output variable for that category.
+   * One-Hot Encoding: Creates a new binary (0 or 1) column for every unique category in a feature. 
+   * Ordinal Encoding: Assigns a unique integer to each category based on a specific, meaningful order.
+   * Label Encoding: Assigns a unique integer to each category randomly, without implying any specific order.
+   * Target Encoding: Replaces each category with the average value of the target output variable for that category.
 
 ## 🔄 5. Data Handling
 -	How do you handle missing data?
