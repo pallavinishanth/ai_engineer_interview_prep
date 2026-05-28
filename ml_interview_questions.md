@@ -6,7 +6,56 @@
 Machine learning is a subset of artificial intelligence where computers are trained to learn patterns from data and make decisions without being explicitly programmed. Instead of writing step-by-step instructions, developers feed data into algorithms, enabling the system to learn from experience and improve on its own over time.
 
 -	Types of ML: supervised, unsupervised, reinforcement?
+
+Supervised learning, the model is trained on a labeled dataset, which acts like an "answer key". The model learns the relationship between input features and known output variables.
+
+Unsupervised learning works with unlabeled data, meaning the system must find hidden patterns or structures on its own without predefined answers.
+
+Reinforcement learning is a feedback-based process where an "agent" learns to interact with an environment through trial and error. It receives rewards for correct actions and penalties for wrong ones to maximize overall long-term success.
+
+
 -	What is overfitting and underfitting?
+
+Overfitting: Too Complex
+
+Overfitting occurs when a model learns the training data too well, memorizing the noise and random fluctuations instead of the underlying pattern.
+
+The Cause: The model is too complex relative to the amount and simplicity of the data.
+
+The Symptom: High accuracy on training data, but poor accuracy on new, unseen test data.
+
+The Analogy: A student who memorizes the exact answers to a practice exam but fails the real test because the questions changed slightly.
+
+The Fixes:
+
+Simplify the model by reducing variables or features.
+
+Gather more training data.
+
+Use regularization techniques to penalize model complexity.
+
+Stop training early before the model memorizes noise.
+
+Underfitting: Too Simple
+
+Underfitting occurs when a model is too simple to capture the underlying trend in the data.
+
+The Cause: The model lacks the capacity or flexibility to learn the data's patterns.
+
+The Symptom: Poor performance on the training data and poor performance on new test data.
+
+The Analogy: A student who only studies one page of a textbook and fails both the practice exam and the real test.
+
+The Fixes:
+
+Increase model complexity (e.g., switch from linear to polynomial regression).
+
+Feature engineering (add more relevant inputs or variables).
+
+Decrease regularization constraints.
+
+Train the model for a longer duration.
+
 -	What is bias vs variance?
 -	What is regularization?
 
