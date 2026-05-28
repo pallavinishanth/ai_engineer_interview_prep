@@ -78,10 +78,33 @@ There are three common ways to calculate and apply this complexity penalty in re
 
 ## 📊 2. Supervised Learning
 -	Difference between classification and regression?
+
+  Classification predicts discrete categories or labels (e.g., "spam" vs. "not spam"). Regression predicts continuous, numerical quantities (e.g., the price of a house or temperature). Both are forms of supervised machine learning, but they fundamentally differ in the type of output they produce.
+  
 -	What is linear regression? assumptions?
+
+Linear regression works reliably only when certain key assumptions about the data are met. These assumptions ensure that the model’s estimates are accurate, unbiased, and suitable for prediction. Some of the assumptions of linear regression are: Linearity, Homoscedasticity of Residuals, Multivariate Normality - Normal Distribution, Independence of Errors, Lack of Multicollinearity, Absence of Endogeneity
+  
 -	What is logistic regression?
+
+  Logistic regression is a supervised machine learning and statistical algorithm used to predict the probability that a given data point belongs to a specific category. Instead of predicting continuous numbers (like linear regression), it uses a logistic (sigmoid) function to map outputs to a probability between 0 and 1.
+
 -	What is decision tree?
+
+  A decision tree is a flowchart-like model used to map out decisions, their potential outcomes, and associated costs. It works by breaking down a complex problem into a series of simple, conditional yes-or-no questions, allowing individuals or algorithms to evaluate the best course of action.
+  
 -	What is Random Forest and why is it better than a single tree?
+
+  A Random Forest is an ensemble machine learning algorithm that creates a "forest" of multiple individual decision trees and merges them together for a more accurate and stable prediction. A single decision tree is like a strict flowchart—it is highly intuitive, but it often struggles when applied to new, unseen data. A Random Forest improves upon this limitation through a few key mechanisms - Drastically Reduced Overfitting, The "Wisdom of Crowds", Bootstrap Sampling, Feature Randomness.
+
+## 📊 2. Unsupervised Learning
+- What are the main types of unsupervised learning?
+
+ Clustering: Grouping similar data points together. Common algorithms include K-Means (groups into \(K\) distinct clusters), DBSCAN (groups based on data point density), and Hierarchical Clustering (creates a tree of clusters).
+ 
+ Dimensionality Reduction: Compressing features while retaining the underlying structure of the dataset. Common techniques include PCA (Principal Component Analysis) for linear data, and t-SNE or UMAP for visualizing high-dimensional data.
+ 
+ Association Rule Learning: Uncovering logical relationships and rules between variables, such as discovering items frequently bought together in retail.
 
 ## 🔍 3. Model Evaluation
 -	What is accuracy, precision, recall, F1-score?
