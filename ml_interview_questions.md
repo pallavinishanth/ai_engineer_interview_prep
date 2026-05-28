@@ -126,13 +126,33 @@ Linear regression works reliably only when certain key assumptions about the dat
 
   Use Precision when the cost of a False Positive is high. Use Recall when the cost of a False Negative is high.
 -	What is confusion matrix?
+
+  A Confusion Matrix is a tabular summary that visualizes the performance of a classification model by comparing its predictions against the actual ground-truth labels. 
 -	What is ROC-AUC?
+
+  ROC-AUC is a performance metric used to evaluate a binary classification model by measuring its ability to distinguish between two classes across all possible decision thresholds. Instead of evaluating the model at just one specific cutoff (like the default [50%]), ROC-AUC evaluates how well the model separates and ranks the data overall.
 
 ## ⚙️ 4. Feature Engineering
 -	What is feature engineering?
+
+  Feature engineering is the process of transforming raw data into meaningful, structured inputs (features) that machine learning models use to make predictions. It involves selecting relevant data, modifying existing variables, and creating new ones to improve a model's accuracy and performance. Feature engineering relies on several key methods to optimize your dataset - Imputation, scaling, normalization, encoding, feature creation, feature selection.
+  
 -	Why is scaling important?
+
+  Scaling is important because machine learning algorithms struggle when different data inputs have vastly different numeric ranges. Large values overpower small values during model training, Algorithms find the optimal solution much faster, Algorithms treating data geometrically require uniform scales.
 -	What is normalization vs standardization?
+
+  Normalization and standardization are the two most common techniques used to scale data for machine learning. While both transform features to a common scale, they calculate that scale differently and serve different purposes. Normalization (Min-Max Scaling): Rescales data into a fixed range, usually between 0 and 1. Standardization (Z-Score Normalization): Rescales data so it has a mean of 0 and a standard deviation of 1.
+
+  Use Normalization when: You know the exact minimum and maximum bounds of your data (e.g., image pixels from 0 to 255).Your algorithm requires a bounded range, such as Neural Networks or KNN.Your data does not follow a bell curve (Gaussian distribution).
+  
+  Use Standardization when: Your data contains outliers, as normalization will compress the normal data into a tiny range to accommodate the extreme values.Your algorithm assumes the data is normally distributed, such as Linear Regression, Logistic Regression, or Support Vector Machines (SVM).
+  
 -	How do you handle categorical variables?
+
+  Handling categorical variables requires converting text labels or categories into numbers because machine learning models can only perform mathematical operations. 
+  
+  * One-Hot Encoding: Creates a new binary (0 or 1) column for every unique category in a feature. * Ordinal Encoding: Assigns a unique integer to each category based on a specific, meaningful order. * Label Encoding: Assigns a unique integer to each category randomly, without implying any specific order. * Target Encoding: Replaces each category with the average value of the target output variable for that category.
 
 ## 🔄 5. Data Handling
 -	How do you handle missing data?
