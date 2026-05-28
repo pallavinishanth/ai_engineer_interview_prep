@@ -2,6 +2,7 @@
 
 ## 🧠 1. ML Fundamentals
 -	What is machine learning?
+
 Machine learning is a subset of artificial intelligence where computers are trained to learn patterns from data and make decisions without being explicitly programmed. Instead of writing step-by-step instructions, developers feed data into algorithms, enabling the system to learn from experience and improve on its own over time.
 
 -	Types of ML: supervised, unsupervised, reinforcement?
