@@ -28,13 +28,13 @@ The Analogy: A student who memorizes the exact answers to a practice exam but fa
 
 The Fixes:
 
-* Simplify the model by reducing variables or features.
+  * Simplify the model by reducing variables or features.
 
-* Gather more training data.
+  * Gather more training data.
 
-* Use regularization techniques to penalize model complexity.
+  * Use regularization techniques to penalize model complexity.
 
-* Stop training early before the model memorizes noise.
+  * Stop training early before the model memorizes noise.
 
 Underfitting: Too Simple
 
@@ -48,13 +48,13 @@ The Analogy: A student who only studies one page of a textbook and fails both th
 
 The Fixes:
 
-* Increase model complexity (e.g., switch from linear to polynomial regression).
+  * Increase model complexity (e.g., switch from linear to polynomial regression).
 
-* Feature engineering (add more relevant inputs or variables).
+  * Feature engineering (add more relevant inputs or variables).
 
-* Decrease regularization constraints.
+  * Decrease regularization constraints.
 
-* Train the model for a longer duration.
+  * Train the model for a longer duration.
 
 -	What is bias vs variance?
 
@@ -117,11 +117,11 @@ Linear regression works reliably only when certain key assumptions about the dat
   
 -	What is accuracy, precision, recall, F1-score?
 
-  + Accuracy: The percentage of total correct predictions. It works well only if your dataset is balanced.
-  + Precision: Out of all predicted positives, how many were actually positive? Use this when false positives are costly (e.g., email spam filtering).
-  + Recall (Sensitivity): Out of all actual positives, how many did the model find? Use this when false negatives are dangerous (e.g., medical diagnoses).
-  + F1-Score: The harmonic mean of precision and recall. It provides a single balance score for imbalanced data.
-  + ROC-AUC: Measures the model's ability to distinguish between classes across all possible thresholds.
+    + Accuracy: The percentage of total correct predictions. It works well only if your dataset is balanced.
+    + Precision: Out of all predicted positives, how many were actually positive? Use this when false positives are costly (e.g., email spam filtering).
+    + Recall (Sensitivity): Out of all actual positives, how many did the model find? Use this when false negatives are dangerous (e.g., medical diagnoses).
+    + F1-Score: The harmonic mean of precision and recall. It provides a single balance score for imbalanced data.
+    + ROC-AUC: Measures the model's ability to distinguish between classes across all possible thresholds.
 -	When do you use precision vs recall?
 
   Use Precision when the cost of a False Positive is high. Use Recall when the cost of a False Negative is high.
