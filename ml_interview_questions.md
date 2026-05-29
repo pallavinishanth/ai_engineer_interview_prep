@@ -209,8 +209,30 @@ Linear regression works reliably only when certain key assumptions about the dat
 ## 🧩 9. Real-world / Scenario Questions
 -	How would you build a fraud detection system?
 -	How do you handle imbalanced data?
+
+  To handle imbalanced data, you must adjust your evaluation metrics and apply data or algorithmic techniques to prevent the model from simply guessing the majority class. Fix Evaluation Metrics (Drop Accuracy, use precision or recall), Resample the Dataset (oversample minority class, undersample majority class, combine both), Adjust Algorithms & Weights
+  
 -	Your model accuracy is high but business performance is low—why?
+
+  High model accuracy often fails to translate to business performance due to a disconnect between statistical success and real-world application. Overfitting to Historic Data, Ignoring the Cost of Errors, Solving the Wrong Problem, Deployment Latency, Model Drift
+  
 -	How would you deploy an ML model?
+
+   * Step 1: Develop and Create a Model in a Training Environment
+
+Build your model in an offline training environment using training data. ML teams often create multiple models, but only a few make it to deployment.
+
+  * Step 2: Optimize and Test Code
+
+Ensure that your code is of high quality and can be deployed. Clean and optimize the code as necessary and test it thoroughly to ensure it functions correctly in a live environment.
+
+  * Step 3: Prepare for Container Deployment
+
+Containerize your model before deployment. Containers are predictable, repeatable and easy to coordinate making them ideal for deployment. They simplify deployment, scaling, modification and updating of ML models.
+
+  * Step 4: Plan for Continuous Monitoring and Maintenance
+
+After your model is running keep checking if it’s working well. Make sure it still gives good answers and works fast. If the data changes or it starts making mistakes, fix it. Also update the model often with new information to keep it useful.
   
 ## 🔄 10. ML Pipeline
 -	What are steps in ML pipeline?
