@@ -32,3 +32,6 @@ Types of tokenization - word-level, sub-word (most common), character-level
 
 ## What is context window?
 The context window is the maximum number of tokens an LLM can consider at once (input + output). Example: If a model has a 4,000 token context window:Input tokens + Output tokens ≤ 4000
+
+## Advantages of using aws bedrock vs individual LLM providers?
+For enterprise applications, I generally prefer AWS Bedrock because it provides a unified interface across multiple foundation models, reducing vendor lock-in and simplifying model experimentation. It integrates with AWS IAM, VPC endpoints, KMS, CloudTrail, and CloudWatch, making security, compliance, and governance much easier than managing multiple direct API integrations. Bedrock also offers managed capabilities such as Knowledge Bases for RAG, Guardrails for safety, model evaluation, and monitoring. Direct model APIs can be useful when I need the latest provider-specific features, but for production enterprise workloads, Bedrock typically reduces operational complexity and accelerates deployment.
